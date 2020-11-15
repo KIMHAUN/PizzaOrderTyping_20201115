@@ -25,6 +25,7 @@ class MainActivity : BaseActivity() {
 
         myTabLayout.setupWithViewPager(myViewPager)
 
+
     }
 
 
