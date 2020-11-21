@@ -1,5 +1,6 @@
 package kr.co.neoplus.pizzaordertyping_20201115.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.ListView
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_pizza_store.*
 import kr.co.neoplus.pizzaordertyping_20201115.R
+import kr.co.neoplus.pizzaordertyping_20201115.StoreDetailActivity
 import kr.co.neoplus.pizzaordertyping_20201115.adapters.StoreAdapter
 import kr.co.neoplus.pizzaordertyping_20201115.datas.Store
 
@@ -34,6 +36,14 @@ class PizzaStoreFragment : Fragment() {
 
         mStoreAdapter = StoreAdapter(context!!, R.layout.store_list_item, mPizzaStoreList)
         pizzaStoreListView.adapter = mStoreAdapter
+
+        pizzaStoreListView.setOnItemClickListener { parent, view, position, id ->
+            val clickedPizzaStore = mPizzaStoreList[position]
+
+            val myIntent = Intent(context!!, StoreDetailActivity::class.java)
+            myIntent.putExtra("pizzaStore", clickedPizzaStore)
+            startActivity(myIntent)
+        }
 
     }
 }
