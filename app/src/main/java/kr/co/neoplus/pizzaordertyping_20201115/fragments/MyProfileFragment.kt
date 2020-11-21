@@ -25,7 +25,11 @@ class MyProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         //내 닉네임 변경 관련 기능
+        changeBtn.setOnClickListener {
 
+            val myIntent = Intent(context!!, MyProfileActivity::class.java)
+            startActivityForResult(myIntent, REQ_FOR_DATA)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
