@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import kr.co.neoplus.pizzaordertyping_20201115.R
 import kr.co.neoplus.pizzaordertyping_20201115.datas.Store
@@ -43,7 +44,12 @@ class StoreAdapter(
         //현재 그려주려는 위치(position)에맞는 데이터(List 꺼내서 변수에 저장
         val storeData = mList[position]
         nameTxt.text = storeData.name
-        
+
+        //storeData.logoUrl에 적힌 주소에 있는 이미지를
+        //웹상의 이미지를 이미지뷰에 뿌려주자. Glide
+        Glide.with(mContext).load(storeData.logoURL).into(logoImg)
+
+        //완성된 row가f 리스트뷰에 뿌려질 결과물
         return row
         
     }
